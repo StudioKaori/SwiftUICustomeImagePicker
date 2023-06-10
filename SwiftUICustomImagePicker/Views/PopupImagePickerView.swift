@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct PopupImagePickerView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+  @StateObject var imagePickerVM = ImagePickerViewModel()
+  
+  var body: some View {
+    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  }
 }
 
 struct PopupImagePickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PopupImagePickerView()
-    }
+  static var previews: some View {
+    PopupImagePickerView()
+  }
 }

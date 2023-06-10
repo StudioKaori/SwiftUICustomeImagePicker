@@ -12,6 +12,10 @@ class ImagePickerViewModel: ObservableObject {
   @Published var fetchedImages: [ImageAsset] = []
   @Published var selectedImages: [ImageAsset] = []
   
+  init() {
+    fetchImages()
+  }
+  
   func fetchImages() {
     let options = PHFetchOptions()
     options.includeHiddenAssets = false
