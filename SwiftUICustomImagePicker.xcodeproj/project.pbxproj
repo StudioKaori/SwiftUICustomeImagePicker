@@ -13,6 +13,7 @@
 		43E5F83C2A35173A00A2BF95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E5F83B2A35173A00A2BF95 /* Preview Assets.xcassets */; };
 		43E5F8442A3517A800A2BF95 /* PopupImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F8432A3517A800A2BF95 /* PopupImagePickerView.swift */; };
 		43E5F8462A3517CE00A2BF95 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F8452A3517CE00A2BF95 /* ImageAsset.swift */; };
+		43E5F8492A3518D600A2BF95 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F8482A3518D600A2BF95 /* ImagePickerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		43E5F83B2A35173A00A2BF95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		43E5F8432A3517A800A2BF95 /* PopupImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupImagePickerView.swift; sourceTree = "<group>"; };
 		43E5F8452A3517CE00A2BF95 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		43E5F8482A3518D600A2BF95 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				43E5F8342A35173900A2BF95 /* SwiftUICustomImagePickerApp.swift */,
+				43E5F84A2A3518DC00A2BF95 /* ViewModel */,
 				43E5F8472A35186700A2BF95 /* Model */,
 				43E5F8422A35179400A2BF95 /* Views */,
 				43E5F8382A35173A00A2BF95 /* Assets.xcassets */,
@@ -87,6 +90,14 @@
 				43E5F8452A3517CE00A2BF95 /* ImageAsset.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		43E5F84A2A3518DC00A2BF95 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				43E5F8482A3518D600A2BF95 /* ImagePickerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5F8372A35173900A2BF95 /* ContentView.swift in Sources */,
+				43E5F8492A3518D600A2BF95 /* ImagePickerViewModel.swift in Sources */,
 				43E5F8442A3517A800A2BF95 /* PopupImagePickerView.swift in Sources */,
 				43E5F8462A3517CE00A2BF95 /* ImageAsset.swift in Sources */,
 				43E5F8352A35173900A2BF95 /* SwiftUICustomImagePickerApp.swift in Sources */,
