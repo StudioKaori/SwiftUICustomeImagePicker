@@ -74,6 +74,20 @@ struct PopupImagePickerView: View {
         ProgressView()
           .frame(width: size.width, height: size.height, alignment: .center)
       }
+      
+      ZStack {
+        RoundedRectangle(cornerRadius: 8, style: .continuous)
+          .fill(.black.opacity(0.1))
+        
+        Circle()
+          .fill(.white.opacity(0.25))
+        
+        Circle()
+          .stroke(.white, lineWidth: 1)
+      }
+      .frame(width: 20, height: 20)
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+      .padding(5)
     }
     .frame(height: 70)
   }
