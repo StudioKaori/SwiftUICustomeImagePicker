@@ -3,7 +3,8 @@
 //  SwiftUICustomImagePicker
 //
 //  Created by Kaori Persson on 2023-06-10.
-//
+// from 8:46
+// https://www.youtube.com/watch?v=dQUgCyb-OMU&t=329s
 
 import SwiftUI
 import PhotosUI
@@ -84,6 +85,17 @@ struct PopupImagePickerView: View {
         
         Circle()
           .stroke(.white, lineWidth: 1)
+        
+        if let index = imagePickerVM.selectedImages.firstIndex(where: { asset in
+          asset.id == imageAsset.id
+        }) {
+          Circle()
+            .fill(.blue)
+          
+          Text("\(imagePickerVM.selectedImages[index].assetIndex)")
+            .font(.caption2.bold())
+            .foregroundColor(.white)
+        }
       }
       .frame(width: 20, height: 20)
       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
