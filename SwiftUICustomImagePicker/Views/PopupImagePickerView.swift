@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct PopupImagePickerView: View {
   @StateObject var imagePickerVM = ImagePickerViewModel()
@@ -33,8 +34,16 @@ struct PopupImagePickerView: View {
       ScrollView(.vertical, showsIndicators: false) {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 10), count: 4)) {
           ForEach($imagePickerVM.fetchedImages) { $imageAsset in
-            //
             GridContent(imageAsset: imageAsset)
+              .onAppear {
+                if imageAsset.thumbnail == nil {
+                  // fetching thumbnail image
+                  let manager = PHCachingImageManager.default()
+                  manager.requestImage(for: imageAsset.asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: nil) { image, _ in
+                    imageAsset.thumbnail = image
+                  }
+                }
+              }
           }
         }
         .padding()
