@@ -7,11 +7,16 @@
 // https://www.youtube.com/watch?v=dQUgCyb-OMU&t=329s
 
 import SwiftUI
-import PhotosUI
+import Photos
 
 struct PopupImagePickerView: View {
   @StateObject var imagePickerVM = ImagePickerViewModel()
+  // to check dark mode
   @Environment(\.self) var env
+  
+  // callbacks
+  var onEnd: () -> ()
+  var onSelect: ([PHAsset]) -> ()
   
   var body: some View {
     let deviceSize = UIScreen.main.bounds.size
@@ -22,7 +27,7 @@ struct PopupImagePickerView: View {
           .frame(maxWidth: .infinity, alignment: .leading)
         
         Button {
-          
+          onEnd()
         } label: {
           Image(systemName: "xmark.circle.fill")
             .font(.title3)
@@ -48,6 +53,30 @@ struct PopupImagePickerView: View {
           }
         }
         .padding()
+      }
+      .safeAreaInset(edge: .bottom) {
+        // add button
+        Button {
+          let imageAssets = imagePickerVM.selectedImages.compactMap { imageAsset -> PHAsset? in
+            return imageAsset.asset
+          }
+          onSelect(imageAssets)
+        } label: {
+          Text("Add\(imagePickerVM.selectedImages.isEmpty ? "" : "\(imagePickerVM.selectedImages.count)")")
+            .font(.callout)
+            .fontWeight(.semibold)
+            .foregroundColor(.white)
+            .padding(.horizontal, 30)
+            .padding(.vertical, 10)
+            .background {
+              Capsule()
+                .fill(.blue)
+            }
+        }
+        .disabled(imagePickerVM.selectedImages.isEmpty)
+        .opacity(imagePickerVM.selectedImages.isEmpty ? 0.6 : 1)
+        .padding(.vertical)
+
       }
     }
     .frame(height: deviceSize.height / 1.8)
@@ -129,6 +158,6 @@ struct PopupImagePickerView: View {
 
 struct PopupImagePickerView_Previews: PreviewProvider {
   static var previews: some View {
-    PopupImagePickerView()
+    ContentView()
   }
 }
