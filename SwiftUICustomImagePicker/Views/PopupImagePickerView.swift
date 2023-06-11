@@ -65,41 +65,63 @@ struct PopupImagePickerView: View {
   func GridContent(imageAsset: ImageAsset) -> some View {
     GeometryReader { proxy in
       let size = proxy.size
-      if let thumbnail = imageAsset.thumbnail {
-        Image(uiImage: thumbnail)
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-          .frame(width: size.width, height: size.height)
-          .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-      } else {
-        ProgressView()
-          .frame(width: size.width, height: size.height, alignment: .center)
-      }
-      
       ZStack {
-        RoundedRectangle(cornerRadius: 8, style: .continuous)
-          .fill(.black.opacity(0.1))
+        if let thumbnail = imageAsset.thumbnail {
+          Image(uiImage: thumbnail)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: size.width, height: size.height)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        } else {
+          ProgressView()
+            .frame(width: size.width, height: size.height, alignment: .center)
+        }
         
-        Circle()
-          .fill(.white.opacity(0.25))
-        
-        Circle()
-          .stroke(.white, lineWidth: 1)
-        
-        if let index = imagePickerVM.selectedImages.firstIndex(where: { asset in
-          asset.id == imageAsset.id
-        }) {
-          Circle()
-            .fill(.blue)
+        ZStack {
+          RoundedRectangle(cornerRadius: 8, style: .continuous)
+            .fill(.black.opacity(0.1))
           
-          Text("\(imagePickerVM.selectedImages[index].assetIndex)")
-            .font(.caption2.bold())
-            .foregroundColor(.white)
+          Circle()
+            .fill(.white.opacity(0.25))
+          
+          Circle()
+            .stroke(.white, lineWidth: 1)
+          
+          if let index = imagePickerVM.selectedImages.firstIndex(where: { asset in
+            asset.id == imageAsset.id
+          }) {
+            Circle()
+              .fill(.blue)
+            
+            Text("\(imagePickerVM.selectedImages[index].assetIndex + 1)")
+              .font(.caption2.bold())
+              .foregroundColor(.white)
+          }
+        }
+        .frame(width: 20, height: 20)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+        .padding(5)
+      }
+      .clipped()
+      .onTapGesture {
+        // adding removing assets
+        withAnimation(.easeInOut) {
+          if let index = imagePickerVM.selectedImages.firstIndex(where: { asset in
+            asset.id == imageAsset.id
+          }) {
+            // remove and update selected index
+            imagePickerVM.selectedImages.remove(at: index)
+            imagePickerVM.selectedImages.enumerated().forEach { item in
+              imagePickerVM.selectedImages[item.offset].assetIndex = item.offset
+            }
+          } else {
+            // add new
+            var newAsset = imageAsset
+            newAsset.assetIndex = imagePickerVM.selectedImages.count
+            imagePickerVM.selectedImages.append(newAsset)
+          }
         }
       }
-      .frame(width: 20, height: 20)
-      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-      .padding(5)
     }
     .frame(height: 70)
   }
