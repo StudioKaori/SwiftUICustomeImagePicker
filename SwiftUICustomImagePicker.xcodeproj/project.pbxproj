@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43405D842A366CF60000E8C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43405D832A366CF60000E8C6 /* Extensions.swift */; };
 		43E5F8352A35173900A2BF95 /* SwiftUICustomImagePickerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F8342A35173900A2BF95 /* SwiftUICustomImagePickerApp.swift */; };
 		43E5F8372A35173900A2BF95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F8362A35173900A2BF95 /* ContentView.swift */; };
 		43E5F8392A35173A00A2BF95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E5F8382A35173A00A2BF95 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43405D832A366CF60000E8C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		43E5F8312A35173900A2BF95 /* SwiftUICustomImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUICustomImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E5F8342A35173900A2BF95 /* SwiftUICustomImagePickerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUICustomImagePickerApp.swift; sourceTree = "<group>"; };
 		43E5F8362A35173900A2BF95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43405D852A366CFA0000E8C6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				43405D832A366CF60000E8C6 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		43E5F8282A35173900A2BF95 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				43E5F8342A35173900A2BF95 /* SwiftUICustomImagePickerApp.swift */,
+				43405D852A366CFA0000E8C6 /* Helpers */,
 				43E5F84A2A3518DC00A2BF95 /* ViewModel */,
 				43E5F8472A35186700A2BF95 /* Model */,
 				43E5F8422A35179400A2BF95 /* Views */,
@@ -171,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E5F8372A35173900A2BF95 /* ContentView.swift in Sources */,
+				43405D842A366CF60000E8C6 /* Extensions.swift in Sources */,
 				43E5F8492A3518D600A2BF95 /* ImagePickerViewModel.swift in Sources */,
 				43E5F8442A3517A800A2BF95 /* PopupImagePickerView.swift in Sources */,
 				43E5F8462A3517CE00A2BF95 /* ImageAsset.swift in Sources */,
