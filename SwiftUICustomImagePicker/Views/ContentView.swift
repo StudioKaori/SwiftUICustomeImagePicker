@@ -3,6 +3,7 @@
 //  SwiftUICustomImagePicker
 //
 //  Created by Kaori Persson on 2023-06-10.
+// From 15:12
 //https://www.youtube.com/watch?v=dQUgCyb-OMU&t=329s
 
 import SwiftUI
@@ -38,8 +39,11 @@ struct ContentView: View {
         } label: {
           Image(systemName: "plus")
         }
-
       }
+    }
+    .popupImagePicker(show: $showPicker) { assets in
+      print("Helo")
+      
     }
   }
 }
