@@ -62,7 +62,7 @@ struct PopupImagePickerView: View {
           }
           onSelect(imageAssets)
         } label: {
-          Text("Add\(imagePickerVM.selectedImages.isEmpty ? "" : "\(imagePickerVM.selectedImages.count)")")
+          Text("Add\(imagePickerVM.selectedImages.isEmpty ? "" : "\(imagePickerVM.selectedImages.count) Images")")
             .font(.callout)
             .fontWeight(.semibold)
             .foregroundColor(.white)

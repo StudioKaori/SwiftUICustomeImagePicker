@@ -13,6 +13,7 @@ extension View {
   func popupImagePicker(show: Binding<Bool>, transition: AnyTransition = .move(edge: .bottom), onSelect: @escaping ([PHAsset]) -> ()) -> some View {
     self
       .overlay {
+        let deviceSize = UIScreen.main.bounds.size
         ZStack {
           // BG Blur
           Rectangle()
@@ -28,10 +29,12 @@ extension View {
               show.wrappedValue = false
             }, onSelect: { assets in
               onSelect(assets)
+              show.wrappedValue = false
             })
             .transition(transition)
           }
         }
+        .frame(width: deviceSize.width, height: deviceSize.height)
         .animation(.easeInOut, value: show.wrappedValue)
       }
   }

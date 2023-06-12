@@ -7,6 +7,7 @@
 //https://www.youtube.com/watch?v=dQUgCyb-OMU&t=329s
 
 import SwiftUI
+import Photos
 
 struct ContentView: View {
   @State var showPicker: Bool = false
@@ -42,7 +43,21 @@ struct ContentView: View {
       }
     }
     .popupImagePicker(show: $showPicker) { assets in
-      print("Helo")
+      // do my operation with the selected images
+      // .init means exact size of the image
+      let manager = PHCachingImageManager.default()
+      let options = PHImageRequestOptions()
+      options.isSynchronous = true
+      DispatchQueue.global(qos: .userInteractive).async {
+        assets.forEach { asset in
+          manager.requestImage(for: asset, targetSize: .init(), contentMode: .default, options: options) { image, _ in
+            guard let image = image else { return }
+            DispatchQueue.main.async {
+              self.pickedImages.append(image)
+            }
+          }
+        }
+      }
       
     }
   }
